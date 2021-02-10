@@ -6,6 +6,13 @@ if(!isset($_SESSION['userId'])){
   header("Location: ../../index.php");
 }
 readfile('../assets/html/header.html');
+
+?>
+
+  <div id="jsGrid" class="jsGrid-table"></div>
+
+<?php
+
 readfile('../assets/html/footer.html');
 
 ?>

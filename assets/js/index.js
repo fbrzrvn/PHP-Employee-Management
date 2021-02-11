@@ -3,10 +3,14 @@ const url = window.location.href.split('/');
 const subdomain = url[url.length-1];
 document.querySelector('a[href$="' + subdomain + '"]').classList.add('active');
 
+$.ajax({
+  type: "GET",
+  url: "../../resources/employees.json"
+}).done(function(data) {
 // jsGrid Table
 $("#jsGrid").jsGrid({
-  width: "100%",
-  height: "100%",
+  width: "90%",
+  height: "400px",
 
   filtering: true,
   inserting: true,
@@ -16,23 +20,64 @@ $("#jsGrid").jsGrid({
   autoload: true,
   pageSize: 10,
   pageButtonCount: 3,
-  deleteConfirm: "Do you really want to delay this employee?",
-
+  deleteConfirm: "Do you really want to delay this data?",
+  controller: {
+    loadData: function(filter) {
+      return $.ajax({
+        url: "../../resources/employees.json",
+        dataType: "json"
+      });
+    }
+  },
   fields: [
-    { name: "id", title: "Id", type: "number", width: 50 },
-    { name: "name", title: "First Name", type: "text", width: 120, validate: "required" },
-    { name: "lastName", title: "Last Name", type: "text", width: 150, validate: "required" },
-    { name: "email", title: "Email", type: "text", width: 200, validate: "required" },
-    { name: "age", title: "Age", type: "number",
-      validate: value => { if (value > 0) return true; }
+    {
+      name: "id",
+      type: "hidden",
+      css: "hide"
     },
-    { name: "gender", title: "Gender", type: "select",
+    {
+      name: "name",
+      type: "text",
+      width: 150,
+      validate: "required"
+    },
+    {
+      name: "lastName",
+      type: "text",
+      width: 150,
+      validate: "required"
+    },
+    {
+      name: "email",
+      type: "text",
+      width: 150,
+      validate: "required"
+    },
+    {
+      name: "age",
+      type: "text",
+      width: 50,
+      validate: function(value) {
+        if (value > 0) {
+          return true;
+        }
+      }
+    },
+    {
+      name: "gender",
+      type: "select",
       items: [
         { Name: "", Id: '' },
         { Name: "Male", Id: 'male' },
         { Name: "Female", Id: 'female' }
-      ], valueField: "Id", textField: "Name", validate: "required"
+      ],
+      valueField: "Id",
+      textField: "Name",
+      validate: "required"
     },
-    { type: "control" }
+    {
+    type: "control"
+    }
   ]
+})
 });

@@ -1,3 +1,14 @@
 .jsGrid-table {
   margin: 50px auto;
 }
+
+/*Employee form*/
+.employee-form{
+  margin: 20px auto 20px auto;
+  width: 60%;
+}
+.form-row,
+.buttons-container{
+  margin-top: 21px;
+  margin-bottom: 21px;
+}

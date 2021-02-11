@@ -32,14 +32,14 @@ $.ajax({
       insertItem: function(item) {
         return $.ajax({
             type: "POST",
-            url: "../../src/library/employeeController.php",
+            url: "../src/library/employeeController.php",
             data: item
         })
       },
       deleteItem: function(item) {
         return $.ajax({
             type: "DELETE",
-            url: "../../src/library/employeeController.php",
+            url: "../src/library/employeeController.php",
             data: item
         });
       },

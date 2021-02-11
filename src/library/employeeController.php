@@ -14,4 +14,9 @@ switch($_SERVER["REQUEST_METHOD"]){
     );
     addEmployee($newEmployee);
     break;
+  case "DELETE":{
+    parse_str(file_get_contents("php://input"), $_DELETE);
+    deleteEmployee($_DELETE['id']);
+    break;
+  }
 }

@@ -28,9 +28,15 @@ $.ajax({
           url: "../resources/employees.json",
           dataType: "json"
         });
-      }
+      },
+      insertItem: function(item) {
+        return $.ajax({
+            type: "POST",
+            url: "../../src/library/employeeController.php",
+            data: item
+        })
+      },
     },
-
     fields: [
       { name: "id", title: "Id", type: "number", width: 40 },
       { name: "name", title: "First Name", type: "text", width: 100, validate: "required" },

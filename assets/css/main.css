@@ -1,6 +1,14 @@
 .jsGrid-table {
   margin: 50px auto;
 }
+.hide
+{
+  display:none;
+}
+#message{
+  margin-top: 15px;
+}
+
 
 /*Employee form*/
 .employee-form{

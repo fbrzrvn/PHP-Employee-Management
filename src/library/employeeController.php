@@ -19,4 +19,17 @@ switch($_SERVER["REQUEST_METHOD"]){
     deleteEmployee($_DELETE['id']);
     break;
   }
+  case "PUT":{
+    parse_str(file_get_contents("php://input"), $_PUT);
+    $updateEmployee = array(
+      'id' => $_PUT['id'],
+      'name' => $_PUT['name'],
+      'lastName' => $_PUT['lastName'],
+      'age' => $_PUT['age'],
+      'email' => $_PUT['email'],
+      'gender' => $_PUT['gender']
+    );
+    updateEmployee($updateEmployee);
+    break;
+  }
 }

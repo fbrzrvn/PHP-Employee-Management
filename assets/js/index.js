@@ -20,34 +20,21 @@ $.ajax({
     autoload: true,
     pageSize: 10,
     pageButtonCount: 3,
-    onItemInserting: function(args){
-      
-    },
+
     onItemInserted: function(args) {
-      var fragment =
-      `<div class="alert alert-success alert-dismissible fade show">
-        <strong>New!</strong> Employee has been added to table.
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>`;
-      $('#message').append(fragment);
+      renderToastMsg("New", "Employee has been added to table", "success")
     },
+
     onItemUpdated: function(args) {
-      var fragment =
-      `<div class="alert alert-info alert-dismissible fade show">
-      <strong>Update!</strong> An employee has been modified.
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>`;
-      $('#message').append(fragment);
+      renderToastMsg("Update", "An employee has been modified", "info")
     },
+
     onItemDeleted: function(args) {
-      var fragment =
-      `<div class="alert alert-danger alert-dismissible fade show">
-      <strong>Delete!</strong> An employee has been deleted.
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>`;
-      $('#message').append(fragment);
+      renderToastMsg("Delete", "An employee has been deleted", "danger");
     },
+
     deleteConfirm: "Are you sure you want to delete this employee",
+
     controller: {
       loadData: function(filter) {
         return $.ajax({
@@ -77,22 +64,24 @@ $.ajax({
         });
       }
     },
+
     fields: [
       { name: "id", type: "hidden", css: "hide", visbile: "false"},
       { name: "name", title: "First Name", type: "text", width: 100, validate: "required" },
       { name: "lastName", title: "Last Name", type: "text", width: 120, validate: "required" },
-      { name: "email", title: "Email", type: "text", width: 150, 
-        validate: { 
-          message: "Employee already exists",
+      { name: "email", title: "Email", type: "text", width: 150,
+        validate:
+        { message: "Employee already exists",
           validator: function(value) {
-            var x = 0;
-            data.forEach(element => {
-              if(element.email == value){
-                x = 1;
-              }
+            let dataArray = JSON.parse(data);
+            let isFound;
+            dataArray.forEach(element => {
+              element.email != value ? isFound = 1 : isFound = 0;
             });
-            return (x == 1 ? "" : value);
-      }}},
+            return (isFound == 1 ? "" : value);
+          }
+        }
+      },
       { name: "age", title: "Age", type: "text", width: 50,
         validate: value => { if (value > 0) return true; }
       },
@@ -108,3 +97,14 @@ $.ajax({
     ]
   })
 });
+
+function renderToastMsg(title, subtitle, type) {
+  var fragment =
+  `
+    <div class="alert alert-${type} alert-dismissible fade show">
+      <strong>${title}!</strong> ${subtitle}.
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  `;
+  $('#message').append(fragment);
+}

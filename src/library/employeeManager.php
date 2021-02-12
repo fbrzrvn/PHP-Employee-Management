@@ -16,7 +16,7 @@ $contentsDecoded = json_decode($contents, true);
 //check if email exists
 foreach($contentsDecoded as $element){
     if($element['email'] == $newEmployee['email']){
-      return "hola";
+      return;
     }
     else{
       //set id

@@ -6,20 +6,29 @@
  * @date: 11/06/2020
  */
 
-function addEmployee(array $newEmployee) {
-  //Load the file
-  $contents = file_get_contents('../../resources/employees.json');
-  //Decode the JSON data into a PHP array.
-  $contentsDecoded = json_decode($contents, true);
-  // Add id
-  $newEmployee['id'] = getNextIdentifier($contentsDecoded);
+function addEmployee(array $newEmployee)
+{
+//Load the file
+$contents = file_get_contents('../../resources/employees.json');
+//Decode the JSON data into a PHP array.
+$contentsDecoded = json_decode($contents, true);
 
-  //Modify Json
-  array_push($contentsDecoded, $newEmployee);
-  //Encode the array back into a JSON string.
-  $json = json_encode($contentsDecoded);
-  //Save the file.
-  file_put_contents('../../resources/employees.json', $json);
+//check if email exists
+foreach($contentsDecoded as $element){
+    if($element['email'] == $newEmployee['email']){
+      return "hola";
+    }
+    else{
+      //set id
+      $newEmployee['id'] = getNextIdentifier($contentsDecoded);
+      //Modify Json
+      array_push($contentsDecoded, $newEmployee);
+      //Encode the array back into a JSON string.
+      $json = json_encode($contentsDecoded);
+      //Save the file.
+      file_put_contents('../../resources/employees.json', $json);
+    }
+  }
 }
 
 
@@ -79,7 +88,8 @@ function getQueryStringParameters(): array
 // TODO implement it
 }
 
-function getNextIdentifier(array $employeesCollection): int {
-  $count = count($employeesCollection) +1;
-  return $count++;
+function getNextIdentifier(array $employeesCollection): int
+{
+  $counter = count($employeesCollection) + 1;
+  return $counter++;
 }

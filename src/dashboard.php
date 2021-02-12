@@ -8,7 +8,7 @@ if(!isset($_SESSION['userId'])){
 readfile('../assets/html/header.html');
 
 ?>
-
+  <div id="message"></div>
   <div id="jsGrid" class="jsGrid-table"></div>
 
 <?php

@@ -43,6 +43,13 @@ $.ajax({
             data: item
         });
       },
+      updateItem: function(item){
+        return $.ajax({
+            type: "PUT",
+            url: "../../src/library/employeeController.php",
+            data: item
+        });
+      }
     },
     fields: [
       { name: "id", title: "Id", type: "text", width: 40 },

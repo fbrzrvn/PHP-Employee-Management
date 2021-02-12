@@ -10,16 +10,12 @@ function addEmployee(array $newEmployee)
 {
 //Load the file
 $contents = file_get_contents('../../resources/employees.json');
-
 //Decode the JSON data into a PHP array.
 $contentsDecoded = json_decode($contents, true);
-
 //Modify Json
 array_push($contentsDecoded, $newEmployee);
-
 //Encode the array back into a JSON string.
 $json = json_encode($contentsDecoded);
-
 //Save the file.
 file_put_contents('../../resources/employees.json', $json);
 }
@@ -29,10 +25,8 @@ function deleteEmployee(string $id)
 {
 //Load the file
 $contents = file_get_contents('../../resources/employees.json');
-
 //Decode the JSON data into a PHP array.
 $contentsDecoded = json_decode($contents, true);
-
 //Modify Json delete user
 foreach($contentsDecoded as $element){
   if($element['id'] == $id){
@@ -40,10 +34,8 @@ foreach($contentsDecoded as $element){
     array_splice($contentsDecoded,$index , 1);
   }
 }
-
 //Encode the array back into a JSON string.
 $json = json_encode($contentsDecoded);
-
 //Save the file.
 file_put_contents('../../resources/employees.json', $json);
 }
@@ -51,7 +43,22 @@ file_put_contents('../../resources/employees.json', $json);
 
 function updateEmployee(array $updateEmployee)
 {
-// TODO implement it
+//Load the file
+$contents = file_get_contents('../../resources/employees.json');
+//Decode the JSON data into a PHP array.
+$contentsDecoded = json_decode($contents, true);
+//Update json
+foreach($contentsDecoded as &$element){
+  if($element['id'] == $updateEmployee['id']){
+    //replace array keeping different keys
+    $updateEmployee = array_replace($element, $updateEmployee);
+    $element = $updateEmployee;
+  }
+}
+//Encode the array back into a JSON string.
+$json = json_encode($contentsDecoded);
+//Save the file.
+file_put_contents('../../resources/employees.json', $json);
 }
 
 

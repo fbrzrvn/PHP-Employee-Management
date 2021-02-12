@@ -46,13 +46,13 @@ $.ajax({
       updateItem: function(item){
         return $.ajax({
             type: "PUT",
-            url: "../../src/library/employeeController.php",
+            url: "../src/library/employeeController.php",
             data: item
         });
       }
     },
     fields: [
-      { name: "id", title: "Id", type: "text", width: 40 },
+      // { name: "id", title: "Id", type: "text", width: 40 },
       { name: "name", title: "First Name", type: "text", width: 100, validate: "required" },
       { name: "lastName", title: "Last Name", type: "text", width: 120, validate: "required" },
       { name: "email", title: "Email", type: "text", width: 150, validate: "required" },

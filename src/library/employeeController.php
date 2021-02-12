@@ -5,9 +5,8 @@ include './employeeManager.php';
 switch($_SERVER["REQUEST_METHOD"]){
   case "POST":
     $newEmployee = array(
-      'id' => $_POST['id'],
-      'name' => $_POST['name'],
-      'lastName' => $_POST['lastName'],
+      'name' => ucfirst($_POST['name']),
+      'lastName' => ucfirst($_POST['lastName']),
       'age' => $_POST['age'],
       'email' => $_POST['email'],
       'gender' => $_POST['gender']

@@ -12,23 +12,14 @@ function addEmployee(array $newEmployee)
 $contents = file_get_contents('../../resources/employees.json');
 //Decode the JSON data into a PHP array.
 $contentsDecoded = json_decode($contents, true);
-
-//check if email exists
-foreach($contentsDecoded as $element){
-    if($element['email'] == $newEmployee['email']){
-      return "hola";
-    }
-    else{
-      //set id
-      $newEmployee['id'] = getNextIdentifier($contentsDecoded);
-      //Modify Json
-      array_push($contentsDecoded, $newEmployee);
-      //Encode the array back into a JSON string.
-      $json = json_encode($contentsDecoded);
-      //Save the file.
-      file_put_contents('../../resources/employees.json', $json);
-    }
-  }
+//set id
+$newEmployee['id'] = getNextIdentifier($contentsDecoded);
+//Modify Json
+array_push($contentsDecoded, $newEmployee);
+//Encode the array back into a JSON string.
+$json = json_encode($contentsDecoded);
+//Save the file.
+file_put_contents('../../resources/employees.json', $json);
 }
 
 
@@ -75,8 +66,28 @@ file_put_contents('../../resources/employees.json', $json);
 
 function getEmployee(string $id)
 {
-// TODO implement it
-header("Location: ../../src/employee.php?=$id");
+//Load the file
+$contents = file_get_contents('../../resources/employees.json');
+//Decode the JSON data into a PHP array.
+$contentsDecoded = json_decode($contents, true);
+
+//get employee info form json
+foreach($contentsDecoded as $element){
+  if($element['id'] == $id){
+    $id = $element['id'];
+    $name = $element['name'];
+    $lastName = $element['lastName'];
+    $email = $element['email'];
+    $age = $element['age'];
+    $gender = $element['gender'];
+    $city = isset($element['city']) ? $element['city'] : '';
+    $streetAddress = isset($element['streetAddress']) ? $element['streetAddress'] : '';
+    $state = isset($element['state']) ? $element['state'] : '';
+    $postalCode = isset($element['postalCode']) ? $element['postalCode'] : '';
+    $phoneNumber = isset($element['phoneNumber']) ? $element['phoneNumber'] : '';
+    header("Location: ../../src/employee.php?id=$id&name=$name&lastName=$lastName&email=$email&age=$age&gender=$gender&city=$city&streetAddress=$streetAddress&state=$state&postalCode=$postalCode&phoneNumber=$phoneNumber");
+  }
+}
 }
 
 

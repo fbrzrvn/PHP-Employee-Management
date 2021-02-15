@@ -79,7 +79,7 @@ $.ajax({
     },
     fields: [
       { name: "id", type: "hidden", css: "hide", visbile: "false"},
-      { name: "name", title: "First Name", type: "text", width: 100, validate: "required" },
+      { name: "name", title: "First Name", type: "text", width: 100, validate: "required"},
       { name: "lastName", title: "Last Name", type: "text", width: 120, validate: "required" },
       { name: "email", title: "Email", type: "text", width: 150, 
         validate: { 

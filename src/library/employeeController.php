@@ -3,9 +3,6 @@
 
 
 switch($_SERVER["REQUEST_METHOD"]){
-<<<<<<< HEAD
-  case "POST":{
-=======
   case "GET":
     require ('./employeeManager.php');
     if(isset($_GET['id'])){
@@ -14,7 +11,6 @@ switch($_SERVER["REQUEST_METHOD"]){
     break;
   case "POST":
     include './employeeManager.php';
->>>>>>> 07ee6399a8802c607c847a0ab8f14425a3575159
     $newEmployee = array(
       'name' => $_POST['name'],
       'lastName' => $_POST['lastName'],

@@ -12,25 +12,6 @@ function addEmployee(array $newEmployee)
 $contents = file_get_contents('../../resources/employees.json');
 //Decode the JSON data into a PHP array.
 $contentsDecoded = json_decode($contents, true);
-<<<<<<< HEAD
-
-//check if email exists
-foreach($contentsDecoded as $element){
-    if($element['email'] == $newEmployee['email']){
-      return;
-    }
-    else{
-      //set id
-      $newEmployee['id'] = getNextIdentifier($contentsDecoded);
-      //Modify Json
-      array_push($contentsDecoded, $newEmployee);
-      //Encode the array back into a JSON string.
-      $json = json_encode($contentsDecoded);
-      //Save the file.
-      file_put_contents('../../resources/employees.json', $json);
-    }
-  }
-=======
 //set id
 $newEmployee['id'] = getNextIdentifier($contentsDecoded);
 //Modify Json
@@ -39,7 +20,6 @@ array_push($contentsDecoded, $newEmployee);
 $json = json_encode($contentsDecoded);
 //Save the file.
 file_put_contents('../../resources/employees.json', $json);
->>>>>>> 07ee6399a8802c607c847a0ab8f14425a3575159
 }
 
 

@@ -5,8 +5,12 @@
 {
   display:none;
 }
-#message{
+#message,
+.message{
   margin-top: 15px;
+}
+.jsgrid-edit-button{
+  display: none;
 }
 
 

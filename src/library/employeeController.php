@@ -11,15 +11,38 @@ switch($_SERVER["REQUEST_METHOD"]){
     break;
   case "POST":
     include './employeeManager.php';
-    $newEmployee = array(
-      'id' => "",
-      'name' => $_POST['name'],
-      'lastName' => $_POST['lastName'],
-      'age' => $_POST['age'],
-      'email' => $_POST['email'],
-      'gender' => $_POST['gender']
-    );
-    addEmployee($newEmployee);
+    if(isset($_POST['id']) && $_POST['id']>0){
+      $updateEmployee = array(
+        'id' => $_POST['id'],
+        'name' => $_POST['name'],
+        'lastName' => $_POST['lastName'],
+        'age' => $_POST['age'],
+        'email' => $_POST['email'],
+        'gender' => $_POST['gender'],
+        'city' => isset($_POST['city']) ? $_POST['city'] : '',
+        'streetAddress' => isset($_POST['streetAddress']) ? $_POST['streetAddress'] : '',
+        'state' => isset($_POST['state']) ? $_POST['state'] : '',
+        'postalCode' => isset($_POST['postalCode']) ? $_POST['postalCode'] : '',
+        'phoneNumber' => isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '',
+      );
+      updateEmployee($updateEmployee);
+    }
+    else{
+      $newEmployee = array(
+        'id' => "",
+        'name' => $_POST['name'],
+        'lastName' => $_POST['lastName'],
+        'age' => $_POST['age'],
+        'email' => $_POST['email'],
+        'gender' => $_POST['gender'],
+        'city' => isset($_POST['city']) ? $_POST['city'] : '',
+        'streetAddress' => isset($_POST['streetAddress']) ? $_POST['streetAddress'] : '',
+        'state' => isset($_POST['state']) ? $_POST['state'] : '',
+        'postalCode' => isset($_POST['postalCode']) ? $_POST['postalCode'] : '',
+        'phoneNumber' => isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '',
+      );
+      addEmployee($newEmployee);
+    }
     break;
   case "DELETE":{
     include './employeeManager.php';

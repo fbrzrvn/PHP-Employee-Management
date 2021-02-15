@@ -20,6 +20,10 @@ array_push($contentsDecoded, $newEmployee);
 $json = json_encode($contentsDecoded);
 //Save the file.
 file_put_contents('../../resources/employees.json', $json);
+
+if(isset($_POST['employeeSubmit'])){
+  header('Location: ../employee.php?employee=success');
+}
 }
 
 
@@ -61,6 +65,8 @@ foreach($contentsDecoded as &$element){
 $json = json_encode($contentsDecoded);
 //Save the file.
 file_put_contents('../../resources/employees.json', $json);
+
+header('Location: ../dashboard.php?update=successful');
 }
 
 

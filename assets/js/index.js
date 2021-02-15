@@ -1,7 +1,13 @@
 // CHANGE ACTIVE PATH
 const url = window.location.href.split('/');
 const subdomain = url[url.length-1];
-document.querySelector('a[href$="' + subdomain + '"]').classList.add('active');
+if(subdomain.length > 12){
+  const path = subdomain.split("?")[0];
+  document.querySelector('a[href$="' + path + '"]').classList.add('active');
+}
+else{
+  document.querySelector('a[href$="' + subdomain + '"]').classList.add('active');
+}
 
 $.ajax({
   type: "GET",
@@ -14,14 +20,13 @@ $.ajax({
 
     filtering: true,
     inserting: true,
-    editing: true,
     sorting: true,
     paging: true,
     autoload: true,
     pageSize: 10,
     pageButtonCount: 3,
     onItemInserting: function(args){
-      
+
     },
     onItemInserted: function(args) {
       var fragment =
@@ -30,6 +35,9 @@ $.ajax({
         <button type="button" class="close" data-dismiss="alert">&times;</button>
       </div>`;
       $('#message').append(fragment);
+      setTimeout(function(){
+        window.location.reload();
+      }, 3000);
     },
     onItemUpdated: function(args) {
       var fragment =

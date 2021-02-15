@@ -28,6 +28,9 @@ $.ajax({
 
     onItemInserted: function(args) {
       renderToastMsg("New", "Employee has been added to table", "success");
+      setTimeout(function(){
+        window.location.reload();
+      }, 3000);
     },
 
     onItemUpdated: function(args) {

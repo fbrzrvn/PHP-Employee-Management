@@ -6,6 +6,7 @@
  * @date: 11/06/2020
  */
 
+
 function addEmployee(array $newEmployee) {
   //Load the file
   $contents = file_get_contents('../../resources/employees.json');
@@ -19,6 +20,11 @@ function addEmployee(array $newEmployee) {
   $json = json_encode($contentsDecoded);
   //Save the file.
   file_put_contents('../../resources/employees.json', $json);
+
+  if (isset($_POST['employeeSubmit'])) {
+    header('Location: ../employee.php?employee=success');
+  }
+
 }
 
 
@@ -58,6 +64,8 @@ function updateEmployee(array $updateEmployee) {
   $json = json_encode($contentsDecoded);
   //Save the file.
   file_put_contents('../../resources/employees.json', $json);
+
+  header('Location: ../dashboard.php?update=successful');
 }
 
 

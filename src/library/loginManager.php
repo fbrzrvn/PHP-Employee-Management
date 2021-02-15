@@ -26,6 +26,7 @@ function login(){
         session_start();
         $_SESSION['userId'] = $user["userId"];
         $_SESSION['name'] = $user["name"];
+        $_SESSION['loginTime'] = time();
         //redirect to dashboard
         header("Location: ../../src/dashboard.php");
         exit();

@@ -5,6 +5,7 @@ session_start();
 if(!isset($_SESSION['userId'])){
   header("Location: ../../index.php");
 }
+include 'library/sessionHelper.php';
 readfile('../assets/html/header.html');
 
 if(isset($_GET['update'])){

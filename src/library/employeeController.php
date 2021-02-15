@@ -1,9 +1,16 @@
 <?php
 
-include './employeeManager.php';
+
 
 switch($_SERVER["REQUEST_METHOD"]){
+  case "GET":
+    require ('./employeeManager.php');
+    if(isset($_GET['id'])){
+      getEmployee($_GET['id']);
+    }
+    break;
   case "POST":
+    include './employeeManager.php';
     $newEmployee = array(
       'id' => "",
       'name' => $_POST['name'],
@@ -15,11 +22,13 @@ switch($_SERVER["REQUEST_METHOD"]){
     addEmployee($newEmployee);
     break;
   case "DELETE":{
+    include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_DELETE);
     deleteEmployee($_DELETE['id']);
     break;
   }
   case "PUT":{
+    include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_PUT);
     $updateEmployee = array(
       'id' => $_PUT['id'],

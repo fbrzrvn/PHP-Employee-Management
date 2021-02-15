@@ -7,6 +7,7 @@ if(!isset($_SESSION['userId'])){
 }
 readfile('../assets/html/header.html');
 ?>
+
 <section>
   <form class="employee-form">
     <!--first row-->
@@ -30,9 +31,9 @@ readfile('../assets/html/header.html');
       <div class="col">
         <label for="employeeForm-gender">Gender</label>
         <select class="form-control" id="employeeForm-gender">
-          <option value="male" <?=$_GET['gender'] == 'man' ? ' selected="selected"' : '';?>>Male</option>
-          <option value="female" <?=$_GET['gender'] == 'woman' ? ' selected="selected"' : '';?>>Female</option>
-          <option value="other" <?=$_GET['gender'] == 'other' ? ' selected="selected"' : '';?>>Other</option>
+          <option value="other" <?=$_GET['gender'] == 'other' ? ' selected="selected"' : '';?>></option>
+          <option value="man" <?=$_GET['gender'] == 'man' ? ' selected="selected"' : '';?>>Man</option>
+          <option value="woman" <?=$_GET['gender'] == 'woman' ? ' selected="selected"' : '';?>>Woman</option>
         </select>
       </div>
     </div>
@@ -76,8 +77,7 @@ readfile('../assets/html/header.html');
     </div>
   </form>
 </section>
+
 <?php
 readfile('../assets/html/footer.html');
-
-
 ?>

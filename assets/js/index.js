@@ -19,7 +19,7 @@ $.ajax({
 
     filtering: true,
     inserting: true,
-    editing: true,
+    editing: false,
     sorting: true,
     paging: true,
     autoload: true,
@@ -27,15 +27,15 @@ $.ajax({
     pageButtonCount: 3,
 
     onItemInserted: function(args) {
-      renderToastMsg("New", "Employee has been added to table", "success")
+      renderToastMsg("New", "Employee has been added to table", "success");
     },
 
     onItemUpdated: function(args) {
-      renderToastMsg("Update", "An employee has been modified", "info")
+      renderToastMsg("Update", "Employee has been modified", "warning");
     },
 
     onItemDeleted: function(args) {
-      renderToastMsg("Delete", "An employee has been deleted", "danger");
+      renderToastMsg("Delete", "Employee has been deleted", "danger");
     },
 
     deleteConfirm: "Are you sure you want to delete this employee",
@@ -79,9 +79,11 @@ $.ajax({
         { message: "Employee already exists",
           validator: function(value) {
             let dataArray = JSON.parse(data);
-            let isFound;
+            let isFound = 0;
             dataArray.forEach(element => {
-              element.email != value ? isFound = 1 : isFound = 0;
+              if (element.email == value) {
+                isFound = 1
+              }
             });
             return (isFound == 1 ? "" : value);
           }
@@ -98,13 +100,15 @@ $.ajax({
         ],
         valueField: "Id", textField: "Name", validate: "required"
       },
-      { type: "control" }
+      { type: "control" },
     ],
     rowClick: function(args){
       window.location.href = `../src/library/employeeController.php?id=${args.item.id}`;
     }
   })
 });
+
+jsGrid.ControlField.prototype.editButtonClass = "hide";
 
 function renderToastMsg(title, subtitle, type) {
   var fragment =

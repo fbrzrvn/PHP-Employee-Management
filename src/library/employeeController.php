@@ -1,9 +1,20 @@
 <?php
 
-include './employeeManager.php';
+
 
 switch($_SERVER["REQUEST_METHOD"]){
+<<<<<<< HEAD
   case "POST":{
+=======
+  case "GET":
+    require ('./employeeManager.php');
+    if(isset($_GET['id'])){
+      getEmployee($_GET['id']);
+    }
+    break;
+  case "POST":
+    include './employeeManager.php';
+>>>>>>> 07ee6399a8802c607c847a0ab8f14425a3575159
     $newEmployee = array(
       'name' => $_POST['name'],
       'lastName' => $_POST['lastName'],
@@ -15,11 +26,13 @@ switch($_SERVER["REQUEST_METHOD"]){
     break;
   }
   case "DELETE":{
+    include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_DELETE);
     deleteEmployee($_DELETE['id']);
     break;
   }
   case "PUT":{
+    include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_PUT);
     $updateEmployee = array(
       'id' => $_PUT['id'],

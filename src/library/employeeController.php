@@ -1,14 +1,14 @@
 <?php
 
+switch($_SERVER["REQUEST_METHOD"]) {
 
-
-switch($_SERVER["REQUEST_METHOD"]){
   case "GET":
     require ('./employeeManager.php');
     if(isset($_GET['id'])){
       getEmployee($_GET['id']);
     }
     break;
+
   case "POST":
     include './employeeManager.php';
     $newEmployee = array(
@@ -20,14 +20,14 @@ switch($_SERVER["REQUEST_METHOD"]){
     );
     addEmployee($newEmployee);
     break;
-  }
-  case "DELETE":{
+
+  case "DELETE":
     include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_DELETE);
     deleteEmployee($_DELETE['id']);
     break;
-  }
-  case "PUT":{
+
+  case "PUT":
     include './employeeManager.php';
     parse_str(file_get_contents("php://input"), $_PUT);
     $updateEmployee = array(
@@ -40,5 +40,5 @@ switch($_SERVER["REQUEST_METHOD"]){
     );
     updateEmployee($updateEmployee);
     break;
-  }
+
 }

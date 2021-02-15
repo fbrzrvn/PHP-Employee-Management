@@ -96,7 +96,7 @@ $.ajax({
       { type: "control" }
     ],
     rowClick: function(args){
-      window.location.href = `../../src/library/employeeController.php?id=${args.item.id}`;
+      window.location.href = `../src/library/employeeController.php?id=${args.item.id}`;
     }
   })
 });

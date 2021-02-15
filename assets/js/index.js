@@ -33,10 +33,6 @@ $.ajax({
       }, 3000);
     },
 
-    onItemUpdated: function(args) {
-      renderToastMsg("Update", "Employee has been modified", "warning");
-    },
-
     onItemDeleted: function(args) {
       renderToastMsg("Delete", "Employee has been deleted", "danger");
     },

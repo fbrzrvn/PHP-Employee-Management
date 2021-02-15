@@ -9,7 +9,7 @@ include 'library/sessionHelper.php';
 readfile('../assets/html/header.html');
 
 if(isset($_GET['update'])){
-  echo '<div class="alert alert-success alert-dismissible fade show message">
+  echo '<div class="alert alert-info alert-dismissible fade show message">
   <strong>Update!</strong> Employee has been updated.
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>';

@@ -7,7 +7,7 @@ if(!isset($_SESSION['userId'])){
 }
 readfile('../assets/html/header.html');
 
-if(isset($_GET['employee'])){
+if(isset($_GET['employee'])) {
   echo '<div class="alert alert-success alert-dismissible fade show message">
   <strong>New!</strong> Employee has been added.
   <button type="button" class="close" data-dismiss="alert">&times;</button>

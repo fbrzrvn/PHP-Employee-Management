@@ -1,7 +1,12 @@
 // CHANGE ACTIVE PATH
 const url = window.location.href.split('/');
 const subdomain = url[url.length-1];
-document.querySelector('a[href$="' + subdomain + '"]').classList.add('active');
+if (subdomain.length > 12) {
+  const path = subdomain.split('?')[0];
+  document.querySelector('a[href$="' + path + '"]').classList.add('active');
+} else {
+  document.querySelector('a[href$="' + subdomain + '"]').classList.add('active');
+}
 
 $.ajax({
   type: "GET",

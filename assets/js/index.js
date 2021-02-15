@@ -105,6 +105,9 @@ $.ajax({
         valueField: "Id", textField: "Name", validate: "required"
       },
       { type: "control" }
-    ]
+    ],
+    rowClick: function(args){
+      window.location.href = `../../src/library/employeeController.php?id=${args.item.id}`;
+    }
   })
 });

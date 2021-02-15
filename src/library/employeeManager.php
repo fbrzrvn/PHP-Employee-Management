@@ -76,6 +76,7 @@ file_put_contents('../../resources/employees.json', $json);
 function getEmployee(string $id)
 {
 // TODO implement it
+header("Location: ../../src/employee.php?=$id");
 }
 
 

@@ -14,10 +14,20 @@ if(isset($_GET['employee'])) {
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>';
 }
+
 ?>
 
 <section>
   <form class="employee-form" method="POST" action="library/employeeController.php">
+    <!-- API faces -->
+    <?php
+      if (isset($_GET['avatar']) && $_GET['avatar'] != "") {
+        echo "<img src=".$_GET['avatar']." width='100px' />";
+      } else {
+        echo "<h3>Choose an avatar</h3>";
+        include './imageGallery.php';
+      }
+    ?>
     <!--first row-->
     <input type="hidden" id="id" name="id" value = "<?= !isset($_GET['id']) ? "" : $_GET['id']?>">
     <div class="form-row">
@@ -40,9 +50,9 @@ if(isset($_GET['employee'])) {
       <div class="col">
         <label for="employeeForm-gender">Gender</label>
         <select class="form-control" id="employeeForm-gender">
-          <option value="other" <?=$_GET['gender'] == 'other' ? ' selected="selected"' : '';?>></option>
-          <option value="man" <?=$_GET['gender'] == 'man' ? ' selected="selected"' : '';?>>Man</option>
-          <option value="woman" <?=$_GET['gender'] == 'woman' ? ' selected="selected"' : '';?>>Woman</option>
+          <option value="man" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'man' ? ' selected="selected"' : '');?> >Man</option>
+          <option value="woman" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'woman' ? ' selected="selected"' : '');?> >Woman</option>
+          <option value="other" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'other' ? ' selected="selected"' : '');?> >Other</option>
         </select>
       </div>
     </div>

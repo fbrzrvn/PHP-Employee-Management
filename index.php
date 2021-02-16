@@ -43,7 +43,7 @@
       <label for="password">Password</label>
       <input type="password" name="password" placeholder="password" class="form-control">
     </div>
-    <input type="submit" name="login" value="Log In" class="btn btn-info">
+    <input type="submit" name="login" value="Log In" class="btn btn-info btn-lg">
   </form>
 </section>
 <!--Bootstrap scripts -->

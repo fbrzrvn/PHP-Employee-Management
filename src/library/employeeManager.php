@@ -89,7 +89,8 @@ function getEmployee(string $id) {
       $state = isset($element['state']) ? $element['state'] : '';
       $postalCode = isset($element['postalCode']) ? $element['postalCode'] : '';
       $phoneNumber = isset($element['phoneNumber']) ? $element['phoneNumber'] : '';
-      header("Location: ../employee.php?id=$id&name=$name&lastName=$lastName&email=$email&age=$age&gender=$gender&city=$city&streetAddress=$streetAddress&state=$state&postalCode=$postalCode&phoneNumber=$phoneNumber");
+      $avatar = isset($element['avatar']) ? $element['avatar'] : '';
+      header("Location: ../employee.php?id=$id&name=$name&lastName=$lastName&email=$email&age=$age&gender=$gender&city=$city&streetAddress=$streetAddress&state=$state&postalCode=$postalCode&phoneNumber=$phoneNumber&avatar=$avatar");
     }
   }
 }

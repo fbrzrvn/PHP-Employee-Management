@@ -41,7 +41,7 @@ function login(){
 }
 //log out function
 function logout(){
-  session_start();
+  // session_start();
   session_unset();
   session_destroy();
   header("Location: /PHP-Employee-Management/");

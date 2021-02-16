@@ -4,14 +4,14 @@ switch($_SERVER["REQUEST_METHOD"]) {
 
   case "GET":
     require ('./employeeManager.php');
-    if(isset($_GET['id'])){
+    if(isset($_GET['id'])) {
       getEmployee($_GET['id']);
     }
     break;
 
   case "POST":
     include './employeeManager.php';
-    if (isset($_POST['id']) and $_POST['id'] > 0) {
+    if (isset($_POST['id']) && $_POST['id'] > 0) {
       $updateEmployee = array(
         'id' => $_POST['id'],
         'name' => $_POST['name'],
@@ -24,8 +24,10 @@ switch($_SERVER["REQUEST_METHOD"]) {
         'state' => isset($_POST['state']) ? $_POST['state'] : '',
         'postalCode' => isset($_POST['postalCode']) ? $_POST['postalCode'] : '',
         'phoneNumber' => isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '',
+        'avatar' => isset($_POST['avatar']) ? $_POST['avatar'] : ''
       );
       updateEmployee($updateEmployee);
+
     } else {
       $newEmployee = array(
         'id' => "",
@@ -39,6 +41,7 @@ switch($_SERVER["REQUEST_METHOD"]) {
         'state' => isset($_POST['state']) ? $_POST['state'] : '',
         'postalCode' => isset($_POST['postalCode']) ? $_POST['postalCode'] : '',
         'phoneNumber' => isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '',
+        'avatar' => isset($_POST['avatar']) ? $_POST['avatar'] : ''
       );
       addEmployee($newEmployee);
     }

@@ -1,3 +1,8 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 .jsGrid-table {
   margin: 50px auto;
 }
@@ -13,6 +18,7 @@
 .employee-form{
   margin: 20px auto 20px auto;
   width: 75%;
+  padding-bottom: 50px;
 }
 .form-row,
 .buttons-container{

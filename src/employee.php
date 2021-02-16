@@ -50,9 +50,9 @@ if(isset($_GET['employee'])) {
       <div class="col">
         <label for="employeeForm-gender">Gender</label>
         <select class="form-control" id="employeeForm-gender">
+          <option value="other" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'other' ? ' selected="selected"' : '');?> ></option>
           <option value="man" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'man' ? ' selected="selected"' : '');?> >Man</option>
           <option value="woman" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'woman' ? ' selected="selected"' : '');?> >Woman</option>
-          <option value="other" <?=!isset($_GET['gender']) ? "" : ($_GET['gender'] == 'other' ? ' selected="selected"' : '');?> >Other</option>
         </select>
       </div>
     </div>

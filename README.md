@@ -35,7 +35,7 @@ php -S localhost:8085
 
 * [php](https://www.php.net/)
 * [bootstrap] (https://getbootstrap.com/)
-* [jQuert] (https://jquery.com/)
+* [jQuery] (https://jquery.com/)
 *  [jsGrid] (http://js-grid.com/)
 
 ## Authors ✒️

@@ -17,6 +17,16 @@ if(isset($_GET['employee'])){
 ?>
 <section>
   <form class="employee-form" method="POST" action="library/employeeController.php">
+    <!-- avatar -->
+    <?php
+      if(isset($_GET['avatar']) && $_GET['avatar'] != ""){
+        echo "<img src=".$_GET['avatar']." width='100px' />";
+      }
+      else{
+        echo "<p>Choose an avatar</p>";
+        include './imageGallery.php';
+      }
+    ?>
     <!--first row-->
     <input type="hidden" id="id" name="id" value = "<?= !isset($_GET['id']) ? "" : $_GET['id']?>">
     <div class="form-row">

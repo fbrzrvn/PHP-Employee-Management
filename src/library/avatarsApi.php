@@ -1,7 +1,7 @@
 <?php
 
 $curl =curl_init();
-$url = 'https://uifaces.co/api?limit=5&gender[]=' . (isset($_GET['gender']) ? ($_GET['gender']== 'man' ? 'male' : 'female'): '');
+$url = 'https://uifaces.co/api?limit=5' . (isset($_GET['gender']) ? ($_GET['gender']== 'man' ? '&gender[]=male' : '&gender[]=female'): '');
 curl_setopt_array($curl,array(
   CURLOPT_URL=> $url,
   CURLOPT_RETURNTRANSFER=>true,
